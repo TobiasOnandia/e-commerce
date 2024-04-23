@@ -7,7 +7,8 @@ import Shop from '../components/Shop'
 import { type Products } from '../types/types'
 import { useSearchParams } from 'next/navigation'
 import { SizesAndColors } from '../mocks/SizesAndColor'
-
+import { useUISize, useUIStore } from '../store/Store'
+import Link from 'next/link'
 function classNames (...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
@@ -16,13 +17,24 @@ export default function DetailsProd ({ products }: { products: Products }) {
   const params = useSearchParams()
   const [selectedColor, setSelectedColor] = useState(SizesAndColors.colors[0])
   const [selectedSize, setSelectedSize] = useState(SizesAndColors.sizes[2])
-  const [open, setOpen] = useState(false)
+
+  // abrir y cerrar el carrito
+  const setOpen = useUISize(state => state.setOpen)
+  const open = useUISize(state => state.open)
 
   const filterProductsForId = products.filter(item => params.has(`${item.id}`))
+
+  // add to CarShopping
+
+  const addToProduct = useUIStore(state => state.addToProduct)
+  const produ = useUIStore(state => state.produ)
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     setOpen(true)
+
+    addToProduct(filterProductsForId[0])
+    console.log(produ)
   }
 
   return (
@@ -35,9 +47,9 @@ export default function DetailsProd ({ products }: { products: Products }) {
             {SizesAndColors.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
                 <div className="flex items-center">
-                  <a href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
+                  <Link href={breadcrumb.href} className="mr-2 text-sm font-medium text-gray-900">
                     {breadcrumb.name}
-                  </a>
+                  </Link>
                   <svg
                     width={16}
                     height={20}
