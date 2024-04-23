@@ -1,7 +1,7 @@
 import { Dialog, Tab, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { navigation } from '@/app/mooks/navigation'
+import { navigation } from '@/app/mocks/navigation'
 
 function classNames (...classes: string[]) {
   return classes.filter(Boolean).join(' ')
