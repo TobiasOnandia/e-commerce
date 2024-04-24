@@ -7,6 +7,7 @@ export default function Shop ({ open, setOpen }: { open: boolean, setOpen: (bool
   const productsShop = useUIStore(state => state.productsShop)
   const removeProduct = useUIStore(state => state.removeToProduct)
   const subTotal = useUIStore(state => state.subTotal)
+  const removeQty = useUIStore(state => state.removeQty)
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -62,7 +63,7 @@ export default function Shop ({ open, setOpen }: { open: boolean, setOpen: (bool
                                   <img
                                     src={product.image}
                                     alt={product.title}
-                                    className="h-full w-full object-cover object-center"
+                                    className="h-full w-full object-contain object-center"
                                   />
                                 </div>
 
@@ -74,7 +75,6 @@ export default function Shop ({ open, setOpen }: { open: boolean, setOpen: (bool
                                       </h3>
                                       <p className="ml-4">${product.price}</p>
                                     </div>
-                                    {/* <p className="mt-1 text-sm text-gray-500">{product.}</p> */}
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
                                     <p className="text-gray-500">Qty 1</p>
@@ -82,7 +82,10 @@ export default function Shop ({ open, setOpen }: { open: boolean, setOpen: (bool
                                     <div className="flex">
                                       <button
                                         type="button"
-                                        onClick={() => { removeProduct(product) }}
+                                        onClick={() => {
+                                          removeProduct(product)
+                                          removeQty()
+                                        }}
                                         className="font-medium text-indigo-600 hover:text-indigo-500"
                                       >
                                         Remove

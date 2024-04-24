@@ -28,6 +28,7 @@ export default function DetailsProd ({ products }: { products: Products }) {
   const addToProduct = useUIStore(state => state.addToProduct)
   const productsShop = useUIStore(state => state.productsShop)
   const recountTotal = useUIStore(state => state.recountTotal)
+  const addQty = useUIStore(state => state.addQty)
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
@@ -42,14 +43,14 @@ export default function DetailsProd ({ products }: { products: Products }) {
     }
 
     recountTotal()
+    addQty()
   }
 
   return (
-    <div className="bg-white">
+    <div className="bg-white p-6">
       <Shop open={open} setOpen={setOpen} />
 
-      <div className="pt-6">
-        <nav aria-label="Breadcrumb">
+        <header aria-label="Breadcrumb">
           <ol role="list" className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
             {SizesAndColors.breadcrumbs.map((breadcrumb) => (
               <li key={breadcrumb.id}>
@@ -76,7 +77,7 @@ export default function DetailsProd ({ products }: { products: Products }) {
               </h5>
             </li>
           </ol>
-        </nav>
+        </header>
 
         {/* Image gallery */}
         <div className="mx-auto mt-6 sm:block  lg:max-w-sm ">
@@ -96,14 +97,13 @@ export default function DetailsProd ({ products }: { products: Products }) {
           </div>
 
           {/* Options */}
-          <div className="mt-4 lg:row-span-3 lg:mt-0">
+          <aside className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
             <p className="text-3xl tracking-tight text-gray-900">$ {filterProductsForId[0].price}</p>
 
             {/* Reviews */}
-            <div className="mt-6">
-              <h3 className="sr-only">Reviews</h3>
-              <div className="flex items-center">
+              <h3 className="sr-only ">Reviews</h3>
+              <div className="flex items-center mt-6">
                 <div className="flex items-center">
                     <StarIcon
                       key={filterProductsForId[0].rating.rate}
@@ -120,7 +120,6 @@ export default function DetailsProd ({ products }: { products: Products }) {
                   {filterProductsForId[0].rating.count} reviews
                 </span>
               </div>
-            </div>
 
             <form className="mt-10">
               {/* Colors */}
@@ -230,10 +229,9 @@ export default function DetailsProd ({ products }: { products: Products }) {
                 Add to bag
               </button>
             </form>
-          </div>
+          </aside>
 
-          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
-
+          <footer className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
             {/* Description and details */}
             <div>
               <h3 className="sr-only">Description</h3>
@@ -264,9 +262,8 @@ export default function DetailsProd ({ products }: { products: Products }) {
                 <p className="text-sm text-gray-600">{filterProductsForId[0].description}</p>
               </div>
             </div>
-          </div>
+            </footer>
         </div>
-      </div>
     </div>
   )
 }

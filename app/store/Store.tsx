@@ -1,6 +1,5 @@
 import { create } from 'zustand'
 import { type Product, type Products } from '../types/types'
-import { consumeAPI } from '../api/consumeAPI'
 
 // open and close size
 interface State {
@@ -12,17 +11,14 @@ interface State {
 interface Store {
   productsShop: [] | Products
   subTotal: number
-
+  qty: number
   addToProduct: (state: Product) => void
   removeToProduct: (state: Product) => void
-
+  addQty: () => void
   recountTotal: () => void
+  removeQty: () => void
 }
 // filter functions
-
-interface StoreFilter {
-
-}
 
 export const useUISize = create<State>()((set) => ({
   open: false,
@@ -33,9 +29,14 @@ export const useUISize = create<State>()((set) => ({
 export const useUIStore = create<Store>()((set) => ({
   productsShop: [],
   subTotal: 0,
+  qty: 0,
   addToProduct: (stateProd) => { set(state => ({ productsShop: [...state.productsShop, stateProd] })) },
   removeToProduct: (stateProd) => { set(state => ({ productsShop: state.productsShop.filter(item => item.id !== stateProd.id) })) },
-  recountTotal: () => { set(state => ({ subTotal: state.productsShop.map(item => item.price).reduce((ant, act) => ant + act) })) }
+  recountTotal: () => { set(state => ({ subTotal: state.productsShop.map(item => item.price).reduce((ant, act) => ant + act) })) },
+  addQty: () => { set(state => ({ qty: state.qty + 1 })) },
+  removeQty: () => { set(state => ({ qty: state.qty - 1 })) }
 }))
 
-export const useFilter = create
+export const useFilterStore = create((set) => ({
+
+}))

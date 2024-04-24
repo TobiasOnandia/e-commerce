@@ -1,13 +1,15 @@
 'use client'
 import { useState } from 'react'
 import { Bars3Icon, ShoppingBagIcon } from '@heroicons/react/24/outline'
-import HeaderMob from '../mobile/HeaderMob'
 import Categories from './Categories'
 import Link from 'next/link'
 import Search from './Search'
+import HeaderMob from '../mobile/HeaderMob'
+import { useUIStore } from '../store/Store'
 
 export default function Header () {
   const [open, setOpen] = useState(false)
+  const qty = useUIStore(state => state.qty)
 
   return (
     <div className="bg-white">
@@ -41,7 +43,7 @@ export default function Header () {
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                 </div>
 
-            {/* Elegir pais
+            {/* Choose a county
                   <div className="hidden lg:ml-8 lg:flex">
                     <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
                       <img
@@ -65,7 +67,7 @@ export default function Header () {
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">0</span>
+                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{qty}</span>
                   </Link>
                 </div>
 
