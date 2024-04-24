@@ -4,7 +4,9 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useUIStore } from '../store/Store'
 
 export default function Shop ({ open, setOpen }: { open: boolean, setOpen: (boolean: boolean) => void }) {
-  const produ = useUIStore(state => state.produ)
+  const productsShop = useUIStore(state => state.productsShop)
+  const removeProduct = useUIStore(state => state.removeToProduct)
+  const subTotal = useUIStore(state => state.subTotal)
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -54,7 +56,7 @@ export default function Shop ({ open, setOpen }: { open: boolean, setOpen: (bool
                       <div className="mt-8">
                         <div className="flow-root">
                           <ul role="list" className="-my-6 divide-y divide-gray-200">
-                            {produ.map((product) => (
+                            {productsShop.map((product) => (
                               <li key={product.id} className="flex py-6">
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
@@ -70,16 +72,17 @@ export default function Shop ({ open, setOpen }: { open: boolean, setOpen: (bool
                                       <h3>
                                         <p>{product.title}</p>
                                       </h3>
-                                      <p className="ml-4">{product.price}</p>
+                                      <p className="ml-4">${product.price}</p>
                                     </div>
                                     {/* <p className="mt-1 text-sm text-gray-500">{product.}</p> */}
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
-                                    <p className="text-gray-500">Qty 0</p>
+                                    <p className="text-gray-500">Qty 1</p>
 
                                     <div className="flex">
                                       <button
                                         type="button"
+                                        onClick={() => { removeProduct(product) }}
                                         className="font-medium text-indigo-600 hover:text-indigo-500"
                                       >
                                         Remove
@@ -97,7 +100,7 @@ export default function Shop ({ open, setOpen }: { open: boolean, setOpen: (bool
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>$262.00</p>
+                        <p>$ {subTotal}</p>
                       </div>
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                       <div className="mt-6">

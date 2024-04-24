@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { Bars3Icon, ShoppingBagIcon } from '@heroicons/react/24/outline'
-import HeaderMob from '../api/mobile/HeaderMob'
+import HeaderMob from '../mobile/HeaderMob'
 import Categories from './Categories'
 import Link from 'next/link'
 import Search from './Search'

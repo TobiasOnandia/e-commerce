@@ -18,23 +18,30 @@ export default function DetailsProd ({ products }: { products: Products }) {
   const [selectedColor, setSelectedColor] = useState(SizesAndColors.colors[0])
   const [selectedSize, setSelectedSize] = useState(SizesAndColors.sizes[2])
 
-  // abrir y cerrar el carrito
+  // open and close  shopcar
   const setOpen = useUISize(state => state.setOpen)
   const open = useUISize(state => state.open)
 
   const filterProductsForId = products.filter(item => params.has(`${item.id}`))
 
   // add to CarShopping
-
   const addToProduct = useUIStore(state => state.addToProduct)
-  const produ = useUIStore(state => state.produ)
+  const productsShop = useUIStore(state => state.productsShop)
+  const recountTotal = useUIStore(state => state.recountTotal)
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     setOpen(true)
 
-    addToProduct(filterProductsForId[0])
-    console.log(produ)
+    const filterProdId = productsShop.findIndex(product => product.id === filterProductsForId[0].id)
+
+    if (filterProdId === -1) {
+      addToProduct(filterProductsForId[0])
+    } else {
+      alert('el producto ya fue anandido ')
+    }
+
+    recountTotal()
   }
 
   return (
@@ -77,7 +84,7 @@ export default function DetailsProd ({ products }: { products: Products }) {
             <img
               src={filterProductsForId[0].image}
               alt={filterProductsForId[0].title}
-              className="h-full w-full object-cover object-center"
+              className="h-full w-full object-contain object-center"
             />
           </picture>
         </div>
@@ -91,7 +98,7 @@ export default function DetailsProd ({ products }: { products: Products }) {
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">{filterProductsForId[0].price}</p>
+            <p className="text-3xl tracking-tight text-gray-900">$ {filterProductsForId[0].price}</p>
 
             {/* Reviews */}
             <div className="mt-6">
