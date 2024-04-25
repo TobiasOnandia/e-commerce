@@ -28,7 +28,7 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 1. Clona este repositorio en tu máquina local utilizando el siguiente comando:
 
    ```
-   git clone <URL del repositorio>
+   git clone [<URL del repositorio>](https://github.com/TobiasOnandia/e-commerce.git)
    ```
 
 2. Navega al directorio del proyecto:
