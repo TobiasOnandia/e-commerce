@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# E-Commerce con Next.js y TypeScript
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+¡Bienvenido/a a mi proyecto de  e-commerce desarrollado con Next.js y TypeScript! 
+## Características principales
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Next.js**: Utilice Next.js como el framework principal para el desarrollo de nuestra aplicación. Next.js nos permite crear aplicaciones web rápidas y eficientes, con capacidades de renderizado del lado del servidor y del lado del cliente.
+  
+- **TypeScript**: TypeScript es un componente fundamental de nuestro proyecto. Al agregar tipado estático a JavaScript, TypeScript nos ayuda a detectar errores en tiempo de compilación y a mejorar la calidad y mantenibilidad de nuestro código.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **E-commerce**: Nuestra aplicación está diseñada para funcionar como un e-commerce completo, permitiendo a los usuarios navegar por productos, agregarlos al carrito de compras,  , gestionar pedidos e iniciar sesion.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Tecnologías utilizadas
 
-## Learn More
+- **Next.js**: El framework principal para el desarrollo de la aplicación.
+  
+- **React**: Utilizamos React como la biblioteca de JavaScript para construir interfaces de usuario interactivas.
+  
+- **TypeScript**: Agregamos tipado estático a JavaScript utilizando TypeScript para mejorar la robustez y la calidad del código.
+  
+- **Tailwind CSS**: Utilizamos Tailwind CSS como nuestra biblioteca de estilos para crear una interfaz de usuario moderna y personalizable.
+    
+## Instalación
 
-To learn more about Next.js, take a look at the following resources:
+Para ejecutar este proyecto localmente, sigue estos pasos:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Clona este repositorio en tu máquina local utilizando el siguiente comando:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```
+   git clone <URL del repositorio>
+   ```
 
-## Deploy on Vercel
+2. Navega al directorio del proyecto:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```
+   cd nombre-del-proyecto
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Instala las dependencias utilizando npm o yarn:
+
+   ```
+   npm install
+   ```
+
+   o
+
+   ```
+   yarn install
+   ```
+
+4. Inicia la aplicación:
+
+   ```
+   npm run dev
+   ```
+
+   o
+
+   ```
+   yarn dev
+   ```
+
+5. Abre tu navegador web y visita `http://localhost:3000` para ver la aplicación en funcionamiento.
