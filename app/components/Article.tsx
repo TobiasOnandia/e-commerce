@@ -11,7 +11,6 @@ export default function Article ({ products }: { products: Products }) {
 
   return (
         <article className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-
         {filteredProducts.map((product) => (
           <Link key={product.id} href={`/details?${product.id}`} className="group flex flex-col justify-between">
             <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-100 xl:aspect-h-8 xl:aspect-w-7">

@@ -7,16 +7,19 @@ import Search from './Search'
 import HeaderMob from '../mobile/HeaderMob'
 import { useUIStore } from '../store/Store'
 import { useSession } from 'next-auth/react'
+import Shop from './Shop'
 
 export default function Header () {
   const [open, setOpen] = useState(false)
+  const [sizeOpen, setSizeOpen] = useState(false)
   const qty = useUIStore(state => state.qty)
   const { data: session } = useSession()
 
   return (
     <div className="bg-white">
       {/* Mobile menu */}
-      <HeaderMob setOpen={setOpen} open={open}/>
+      <Shop setOpen={setOpen} open={open} />
+      <HeaderMob setOpen={setSizeOpen} open={sizeOpen}/>
 
       <header className="relative z-10 bg-white">
 
@@ -58,13 +61,15 @@ export default function Header () {
 
                 {/* bag Shop */}
                 <div className="ml-4 flow-root lg:ml-6">
-                  <Link href="#" className="group -m-2 flex items-center p-2">
+                  <button
+                  onClick={() => { setOpen(true) }}
+                  className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{qty}</span>
-                  </Link>
+                  </button>
                 </div>
 
               </div>
