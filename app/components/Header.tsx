@@ -6,10 +6,12 @@ import Link from 'next/link'
 import Search from './Search'
 import HeaderMob from '../mobile/HeaderMob'
 import { useUIStore } from '../store/Store'
+import { useSession } from 'next-auth/react'
 
 export default function Header () {
   const [open, setOpen] = useState(false)
   const qty = useUIStore(state => state.qty)
+  const { data: session } = useSession()
 
   return (
     <div className="bg-white">
@@ -35,11 +37,19 @@ export default function Header () {
                 <Categories/>
 
               {/* Login */}
+
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <Link href="/login" className="text-sm font-medium text-gray-700 hover:text-gray-800">
-                    Sign in
-                  </Link>
+                  {
+                    (session)
+                      ? <Link href="/#login" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                      {session?.user?.name}
+                     </Link>
+
+                      : <Link href="/login" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                      Sign in
+                    </Link>
+                  }
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                 </div>
 

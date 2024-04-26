@@ -36,7 +36,3 @@ export const useUIStore = create<Store>()((set) => ({
   addQty: () => { set(state => ({ qty: state.qty + 1 })) },
   removeQty: () => { set(state => ({ qty: state.qty - 1 })) }
 }))
-
-export const useFilterStore = create((set) => ({
-
-}))
