@@ -20,6 +20,8 @@
 - **TypeScript**: Agregamos tipado estático a JavaScript utilizando TypeScript para mejorar la robustez y la calidad del código.
   
 - **Tailwind CSS**: Utilizamos Tailwind CSS como nuestra biblioteca de estilos para crear una interfaz de usuario moderna y personalizable.
+
+- **Next-Auth**: Utilizamos Next-Auth para gestionar el inicio de sesion
     
 ## Instalación
 
