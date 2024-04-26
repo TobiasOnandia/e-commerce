@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Search from './Search'
 import HeaderMob from '../mobile/HeaderMob'
 import { useUIStore } from '../store/Store'
-import { useSession } from 'next-auth/react'
+import { signOut, useSession } from 'next-auth/react'
 import Shop from './Shop'
 
 export default function Header () {
@@ -14,6 +14,10 @@ export default function Header () {
   const [sizeOpen, setSizeOpen] = useState(false)
   const qty = useUIStore(state => state.qty)
   const { data: session } = useSession()
+
+  const handleLogOut = () => {
+    signOut()
+  }
 
   return (
     <div className="bg-white">
@@ -52,6 +56,9 @@ export default function Header () {
                       : <Link href="/login" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                       Sign in
                     </Link>
+                  }
+                  {
+                      (session !== null) && <button onClick={handleLogOut} className='text-gray-700 text-sm font-medium ml-2'>Log out</button>
                   }
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                 </div>

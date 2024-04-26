@@ -1,5 +1,6 @@
 'use client'
 
+import { Toaster, toast } from 'sonner'
 import { useState } from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
@@ -41,7 +42,7 @@ export default function DetailsProd ({ products }: { products: Products }) {
     if (filterProdId === -1) {
       addToProduct(filterProductsForId[0])
     } else {
-      alert('el producto ya fue anandido ')
+      toast.success('el producto ya fue agregado ')
     }
 
     recountTotal()
@@ -140,7 +141,7 @@ export default function DetailsProd ({ products }: { products: Products }) {
                   </div>
                 </RadioGroup>
               </div>
-
+              <Toaster position='top-center' richColors />
               <button
                 onClick={handleClick}
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
