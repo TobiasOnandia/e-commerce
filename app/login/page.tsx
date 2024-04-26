@@ -1,4 +1,9 @@
+'use client'
+import { signIn, useSession } from 'next-auth/react'
+
 export default function Page () {
+  const { data: session } = useSession()
+  console.log(session)
   return (
       <div className="bg-white h-screen">
 
@@ -52,6 +57,7 @@ export default function Page () {
 
               <div>
                 <button
+                  onClick={async () => { await signIn() }}
                   type="submit"
                   className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
